@@ -16,6 +16,7 @@
 !/bottom/
 !/clangd/
 !/cmus/
+!/delta/
 !/fastfetch/
 !/ghostty/
 !/hyde/
@@ -23,7 +24,10 @@
 !/kanata/
 !/kew/
 !/kitty/
+!/lazydocker/
+!/lazygit/
 !/nvim/
+!/otter-launcher/
 !/river/
 !/silicon/
 !/spicetify/
@@ -33,6 +37,3 @@
 !/waybar/
 !/yazi/
 !/zathura/
-!/delta/
-!/lazygit/
-!/lazydocker/
