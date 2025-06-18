@@ -307,7 +307,7 @@ api.nvim_create_autocmd("LspAttach", {
                                 group    = api.nvim_create_augroup("lsp-detach", { clear = true }),
                                 callback = function(event2)
                                         vim.lsp.buf.clear_references()
-                                        api.nvim_create_autocmds({ "lsp-highlight", buffer = event2.buf })
+                                        -- api.nvim_create_autocmd({ "lsp-highlight", buffer = event2.buf })
                                 end
                         })
                 end
