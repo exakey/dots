@@ -113,7 +113,7 @@
                         "return-type": "json",
                         "format": "{}",
                         "rotate": 0,
-                        "interval": 43200,
+                        "interval": 21600,
                         "tooltip": true,
                         "signal": 20
                 },
