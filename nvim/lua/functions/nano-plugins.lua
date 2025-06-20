@@ -1,5 +1,5 @@
 local M = {}
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 ---1. start/stop with just one keypress
 ---2. add notification & sound for recording
@@ -35,7 +35,7 @@ function M.editMacro(reg)
         end)
 end
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 -- Simplified implementation of coerce.nvim
 function M.camelSnakeToggle()
@@ -82,7 +82,7 @@ function M.toggleWordCasing()
         vim.api.nvim_win_set_cursor(0, prevCursor)
 end
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 -- Simplified implementation of `coerce.nvim`
 function M.camelSnakeLspRename()
@@ -112,7 +112,7 @@ function M.toggleTitleCase()
         vim.api.nvim_win_set_cursor(0, prevCursor)
 end
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 function M.smartDuplicate()
         local row, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -144,7 +144,7 @@ function M.smartDuplicate()
         vim.api.nvim_win_set_cursor(0, { row + 1, targetCol })
 end
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 -- `fF` work with `nN` instead of `;,` (inspired by tT.nvim)
 ---@param char "f"|"F"
@@ -156,7 +156,8 @@ function M.fF(char)
         vim.v.searchforward = 1                           -- `n` always forward, `N` always backward
 end
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+
 
 function M.formatWithFallback()
         local formattingLsps = vim.lsp.get_clients { method = "textDocument/formatting", bufnr = 0 }
@@ -177,5 +178,69 @@ function M.formatWithFallback()
         end
 end
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+
+function M.alignSelectionByChar()
+        local sep = vim.fn.input('Enter table separator: ')
+        if sep == '' then sep = '&' end
+
+        -- Ensure we are in visual mode
+        local mode = vim.fn.mode()
+        if not vim.tbl_contains({ 'v', 'V', '\22' }, mode) then
+                print('Not in visual mode')
+                return
+        end
+
+        -- Get positions of the selection
+        local s_pos        = vim.fn.getpos('v')
+        local e_pos        = vim.fn.getpos('.')
+
+        local s_row, e_row = s_pos[2], e_pos[2]
+        if s_row > e_row then
+                s_row, e_row = e_row, s_row
+        end
+
+        -- Get selected lines from the buffer (0-based indexing)
+        local lines = vim.api.nvim_buf_get_lines(0, s_row - 1, e_row, false)
+        if not lines or #lines == 0 then
+                print('No lines selected')
+                return
+        end
+
+        local split_lines, col_widths, indents = {}, {}, {}
+
+        for _, line in ipairs(lines) do
+                -- Detect indentation (spaces or tabs)
+                local indent = line:match('^%s*') or ''
+                table.insert(indents, indent)
+
+                -- Remove indentation before splitting
+                local stripped = line:sub(#indent + 1)
+                local cols     = vim.split(stripped, sep, true)
+                table.insert(split_lines, cols)
+
+                -- Compute max width for each column
+                for i, col in ipairs(cols) do
+                        local width   = vim.fn.strdisplaywidth(vim.trim(col))
+                        col_widths[i] = math.max(col_widths[i] or 0, width)
+                end
+        end
+
+        -- Rebuild aligned lines
+        local aligned_lines = {}
+        for idx, cols in ipairs(split_lines) do
+                local aligned = {}
+                for i, col in ipairs(cols) do
+                        local txt = vim.trim(col)
+                        local pad = col_widths[i] - vim.fn.strdisplaywidth(txt)
+                        table.insert(aligned, txt .. string.rep(' ', pad))
+                end
+                table.insert(aligned_lines, indents[idx] .. table.concat(aligned, ' ' .. sep .. ' '))
+        end
+
+        -- Replace the original lines in the buffer with aligned ones
+        vim.api.nvim_buf_set_lines(0, s_row - 1, e_row, false, aligned_lines)
+end
+
+------------------------------------------------------------------------------------------------------------------------
 return M
