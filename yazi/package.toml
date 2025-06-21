@@ -49,11 +49,6 @@ rev = "50a3785"
 hash = "5842243b6fc64b4d3bc3cf8bf15fb9d5"
 
 [[plugin.deps]]
-use = "sharklasers996/eza-preview"
-rev = "7ca4c25"
-hash = "d1efd1931dd738af0d6e4f41dd491313"
-
-[[plugin.deps]]
 use = "Tyarel8/goto-drives"
 rev = "dc017a2"
 hash = "524380fa5dcafa41bf6ec9baae9dc8f0"
