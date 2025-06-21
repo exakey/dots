@@ -158,7 +158,6 @@ end
 
 ------------------------------------------------------------------------------------------------------------------------
 
-
 function M.formatWithFallback()
         local formattingLsps = vim.lsp.get_clients { method = "textDocument/formatting", bufnr = 0 }
 
