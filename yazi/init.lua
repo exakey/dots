@@ -20,18 +20,20 @@ require("full-border"):setup({
         type = ui.Border.PLAIN,
 })
 
+th.git                = th.git or {}
+th.git.untracked_sign = "▌"
+th.git.modified_sign  = "▌"
+th.git.added_sign     = "▌"
+th.git.deleted_sign   = "🭶"
+th.git.untracked      = ui.Style():fg("#7c7157")
+th.git.modified       = ui.Style():fg("#f9e2af")
+th.git.added          = ui.Style():fg("#7c7157")
+th.git.deleted        = ui.Style():fg("#f38ba8")
+
 require("git"):setup()
 -- require("glow"):setup()
 -- require("hexyl"):setup()
 -- require("lsar"):setup()
-
-th.git               = th.git or {}
-th.git.modified_sign = "▐"
-th.git.added_sign    = "▐"
-th.git.added_sign    = "🭶"
-th.git.modified      = ui.Style():fg("#f9e2af")
-th.git.added         = ui.Style():fg("#7c7157")
-th.git.added         = ui.Style():fg("#f38ba8")
 
 require("fuse-archive"):setup({
         smart_enter = true
