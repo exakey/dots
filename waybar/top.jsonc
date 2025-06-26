@@ -152,7 +152,7 @@
                 },
                 "hyprland/language": {
                         "format": "{}",
-                        "format-en": "🮆",
+                        "format-en": "🮋",
                         // "format-ru": "▉",
                         "format-ru": "🬋",
                         "on-click": "$HOME/.local/share/bin/keyboardswitch"
