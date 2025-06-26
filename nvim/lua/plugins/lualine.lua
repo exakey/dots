@@ -62,8 +62,8 @@ return {
                                                 "diff",
                                                 colored    = true,
                                                 diff_color = {
-                                                        added    = "GitSignsAdd",
-                                                        modified = "GitSignsChange",
+                                                        added    = "String",
+                                                        modified = "GitSignsAdd",
                                                         removed  = "GitSignsDelete",
                                                 },
                                                 symbols    = { added = "+", modified = "~", removed = "-" },
