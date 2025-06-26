@@ -293,7 +293,7 @@
                         "max-length": 6
                 },
                 "hyprland/submap": {
-                        "format": "🮆",
+                        "format": "🮋",
                         "max-length": 8,
                         "tooltip": false
                 },
