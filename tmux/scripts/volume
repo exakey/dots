@@ -1,0 +1,47 @@
+#!/usr/bin/bash
+
+get_volume_icon()
+{
+        local vol=$1
+        if [[ "$vol" -eq 0 ]]; then
+                echo " "
+        elif [[ "$vol" -lt 40 ]]; then
+                echo "▁"
+        elif [[ "$vol" -lt 50 ]]; then
+                echo "▂"
+        elif [[ "$vol" -lt 60 ]]; then
+                echo "▃"
+        elif [[ "$vol" -lt 70 ]]; then
+                echo "▄"
+        elif [[ "$vol" -lt 80 ]]; then
+                echo "▅"
+        elif [[ "$vol" -lt 90 ]]; then
+                echo "▆"
+        elif [[ "$vol" -lt 100 ]]; then
+                echo "▇"
+        else
+                echo "█"
+        fi
+}
+
+if command -v pamixer &>/dev/null; then
+        muted=$(pamixer --get-mute)
+        volume=$(pamixer --get-volume)
+        if [[ "$muted" == "true" || "$volume" -eq 0 ]]; then
+                echo " "
+        else
+                echo "$(get_volume_icon "$volume")"
+        fi
+
+elif command -v amixer &>/dev/null; then
+        muted=$(amixer get Master | grep '\[off\]')
+        volume=$(amixer get Master | grep -oP '\[\d+%\]' | head -1 | grep -oP '\d+')
+        if [[ -n "$muted" || "$volume" -eq 0 ]]; then
+                echo " "
+        else
+                echo "$(get_volume_icon "$volume")"
+        fi
+
+else
+        echo "N/A"
+fi
