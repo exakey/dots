@@ -6,12 +6,12 @@ return {
         lazy     = false,
         priority = 1000,
         keys     = {
-                { "<C-n>",      function() Snacks.notifier.show_history() end,   desc = "Notification History" },
-                { "<A-b>",      function() Snacks.bufdelete() end,               desc = "Delete Buffer" },
-                { "<leader>rf", function() Snacks.rename.rename_file() end,      desc = "Rename File" },
-                { "<leader>lg", function() Snacks.lazygit() end,                 desc = "Lazygit" },
-                { "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference",      mode = { "n", "t" } },
-                { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference",      mode = { "n", "t" } },
+                { "<C-n>",      function() Snacks.notifier.show_history() end,        desc = "Notification History" },
+                { "<A-b>",      function() Snacks.bufdelete() vim.cmd("norm zz") end, desc = "Delete Buffer" },
+                { "<leader>rf", function() Snacks.rename.rename_file() end,           desc = "Rename File" },
+                { "<leader>lg", function() Snacks.lazygit() end,                      desc = "Lazygit" },
+                { "]]",         function() Snacks.words.jump(vim.v.count1) end,       desc = "Next Reference",      mode = { "n", "t" } },
+                { "[[",         function() Snacks.words.jump(-vim.v.count1) end,      desc = "Prev Reference",      mode = { "n", "t" } },
                 { -- MAIN
                         "<leader><leader><leader>",
                         function() Snacks.picker({ layout = "vscode" }) end,

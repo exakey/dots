@@ -19,6 +19,7 @@ return {
                 { "MahanRahmati/blink-nerdfont.nvim" },
                 { "niuiic/blink-cmp-rg.nvim" },
                 { "jdrupal-dev/css-vars.nvim" },
+                { "archie-judd/blink-cmp-words" },
         },
         opts         = {
                 snippets   = { preset = "luasnip" },
@@ -126,29 +127,29 @@ return {
                                 elseif vim.bo.filetype == "css" or "jsonc" or "json" then
                                         return { "snippets", "css-vars", "lsp", "path", "buffer", "ripgrep", "nerdfont" }
                                 elseif success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
-                                        return { "buffer", "ripgrep" }
+                                        return { "buffer", "ripgrep", "blink-cmp-words" }
                                 else
                                         return { "snippets", "lsp", "path", "buffer", "ripgrep", "nerdfont", "env" }
                                 end
                         end,
                         providers    = {
-                                lazydev  = {
+                                lazydev    = {
                                         name         = "Lazydev",
                                         module       = "lazydev.integrations.blink",
                                         score_offset = 220,
                                 },
-                                snippets = {
+                                snippets   = {
                                         name               = "Snip",
                                         score_offset       = 140,
                                         min_keyword_length = 2,
                                 },
-                                go_deep  = {
+                                go_deep    = {
                                         name         = "go_deep",
                                         module       = "blink.compat.source",
                                         score_offset = 180,
                                         opts         = {},
                                 },
-                                lsp      = {
+                                lsp        = {
                                         name         = "LSP",
                                         module       = "blink.cmp.sources.lsp",
                                         score_offset = 160,
@@ -162,7 +163,7 @@ return {
                                                 return luadocButNotComment
                                         end,
                                 },
-                                path     = {
+                                path       = {
                                         name         = "Path",
                                         module       = "blink.cmp.sources.path",
                                         score_offset = 260,
@@ -176,7 +177,7 @@ return {
                                                 show_hidden_files_by_default = true,
                                         },
                                 },
-                                buffer   = {
+                                buffer     = {
                                         name         = "Buf",
                                         score_offset = 60,
                                         max_items    = 8,
@@ -189,11 +190,11 @@ return {
                                                 -- end
                                         },
                                 },
-                                css_vars = {
+                                css_vars   = {
                                         name   = "CSS",
                                         module = "css-vars.blink",
                                 },
-                                omni     = {
+                                omni       = {
                                         name         = "Omni",
                                         module       = "blink.cmp.sources.complete_func",
                                         score_offset = 60,
@@ -201,7 +202,7 @@ return {
                                                 disable_omnifunc = { "v:lua.vim.lsp.omnifunc" },
                                         },
                                 },
-                                env      = {
+                                env        = {
                                         name         = "Env",
                                         module       = "blink-cmp-env",
                                         max_items    = 10,
@@ -211,13 +212,13 @@ return {
                                                 show_documentation_window = true,
                                         },
                                 },
-                                nerdfont = {
+                                nerdfont   = {
                                         module       = "blink-nerdfont",
                                         name         = "Nerd",
                                         score_offset = 10,
                                         opts         = { insert = true },
                                 },
-                                ripgrep  = {
+                                ripgrep    = {
                                         module       = "blink-cmp-rg",
                                         name         = "RG",
                                         score_offset = 10,
@@ -240,6 +241,15 @@ return {
                                                         return context.line:sub(1, context.cursor[2]):match("[%w_-]+$") or
                                                             ""
                                                 end,
+                                        },
+                                },
+                                dictionary = {
+                                        name   = "blink-cmp-words",
+                                        module = "blink-cmp-words.dictionary",
+                                        opts   = {
+                                                dictionary_search_threshold = 3,
+                                                score_offset                = 0,
+                                                pointer_symbols             = { "!", "&", "^" },
                                         },
                                 },
                         },

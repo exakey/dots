@@ -72,7 +72,7 @@
                         "custom/separators",
                         "pulseaudio#icon",
                         "pulseaudio",
-                        "cava",
+                        // "cava",
                         // "custom/media",
                         ""
                 ],
@@ -298,7 +298,7 @@
                         "tooltip": false
                 },
                 "custom/recording": {
-                        "exec": "$HOME/.config/waybar/scripts/recording",
+                        "exec": "$HOME/.local/share/bin/recording",
                         "format": "{}",
                         "max-length": 8,
                         "tooltip": false,

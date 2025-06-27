@@ -276,7 +276,8 @@ api.nvim_create_autocmd("LspAttach", {
                 map(",I", vim.lsp.buf.incoming_calls, "Incoming calls")
                 map(",c", vim.lsp.buf.code_action, "󱠀 Code Action")
                 map(",a", function() require("functions.quickfix").code_actions() end, "󱠀 Quickfix")
-                map("<leader><leader>c", function() require("tiny-code-action").code_action() end, "󱠀 Code Action Picker")
+                -- map("<leader><leader>c", function() require("tiny-code-action").code_action() end, "󱠀 Code Action Picker")
+                map(", ", function() require("tiny-code-action").code_action() end, "󱠀 Code Action Picker")
                 -- map("<leader>f", vim.lsp.buf.format, "󰏪 Format Buffer")
 
                 local function client_supports_method(client, method, bufnr)

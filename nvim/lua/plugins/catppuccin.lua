@@ -53,9 +53,6 @@ local customCol = function(colors)
                 CursorLine                       = { bg = colors.none },
                 CursorLineNr                     = { fg = colors.flamingo },
                 Define                           = { fg = colors.pink },
-                DiagnosticError                  = { bg = colors.crust },
-                DiagnosticInfo                   = { bg = colors.crust },
-                DiagnosticWarn                   = { bg = colors.crust },
                 Directory                        = { fg = ivory },
                 -- EndOfBuffer                   = { fg = colors.},
                 Error                            = { fg = colors.red },
@@ -587,6 +584,10 @@ return {
                 })
 
                 -- vim.api.nvim_set_hl(0, "borderStyle", { fg = colors.crust, bg = colors.crust })
-                vim.cmd("colorscheme catppuccin")
+                if os.getenv("DISPLAY") ~= nil or os.getenv("WAYLAND_DISPLAY") ~= nil then
+                        vim.cmd("colorscheme catppuccin")
+                else
+                        vim.cmd("colorscheme industry")
+                end
         end,
 }
