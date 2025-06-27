@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+get_brightness_icon()
+{
+        local bright=$1
+        if [[ "$bright" -eq 0 ]]; then
+                echo " "
+        elif [[ "$bright" -lt 10 ]]; then
+                echo "▁"
+        elif [[ "$bright" -lt 25 ]]; then
+                echo "▂"
+        elif [[ "$bright" -lt 40 ]]; then
+                echo "▃"
+        elif [[ "$bright" -lt 55 ]]; then
+                echo "▄"
+        elif [[ "$bright" -lt 70 ]]; then
+                echo "▅"
+        elif [[ "$bright" -lt 85 ]]; then
+                echo "▆"
+        elif [[ "$bright" -lt 100 ]]; then
+                echo "▇"
+        else
+                echo "█"
+        fi
+}
+
+if command -v acpi &>/dev/null; then
+        brightness=$(brightnessctl get)
+        if [[ "$brightness" -eq 0 ]]; then
+                echo " "
+        else
+                echo "$(get_brightness_icon "$brightness")"
+        fi
+else
+        echo "N/A"
+fi

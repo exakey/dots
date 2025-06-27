@@ -5,17 +5,17 @@ get_volume_icon()
         local vol=$1
         if [[ "$vol" -eq 0 ]]; then
                 echo " "
-        elif [[ "$vol" -lt 40 ]]; then
+        elif [[ "$vol" -lt 10 ]]; then
                 echo "▁"
-        elif [[ "$vol" -lt 50 ]]; then
+        elif [[ "$vol" -lt 25 ]]; then
                 echo "▂"
-        elif [[ "$vol" -lt 60 ]]; then
+        elif [[ "$vol" -lt 40 ]]; then
                 echo "▃"
-        elif [[ "$vol" -lt 70 ]]; then
+        elif [[ "$vol" -lt 55 ]]; then
                 echo "▄"
-        elif [[ "$vol" -lt 80 ]]; then
+        elif [[ "$vol" -lt 70 ]]; then
                 echo "▅"
-        elif [[ "$vol" -lt 90 ]]; then
+        elif [[ "$vol" -lt 85 ]]; then
                 echo "▆"
         elif [[ "$vol" -lt 100 ]]; then
                 echo "▇"
