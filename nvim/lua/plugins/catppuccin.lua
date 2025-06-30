@@ -38,6 +38,10 @@ local customCol = function(colors)
                 --------------------------------------------------------------------------------------------------------
                 -- BUILTINS
 
+                DiagnosticError                  = { bg = colors.crust },
+                DiagnosticWarn                   = { bg = colors.crust },
+                DiagnosticInfo                   = { bg = colors.crust },
+                DiagnosticfHint                  = { bg = colors.crust },
                 ActiveLineNumber                 = { fg = colors.subtext0 },
                 Boolean                          = { fg = colors.peach },
                 borderStyle                      = { fg = colors.crust, bg = colors.crust },
