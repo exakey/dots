@@ -13,6 +13,8 @@ font-synthetic-style       = no-bold
 font-synthetic-style       = no-italic
 font-synthetic-style       = no-bold-italic
 
+bold-is-bright             = true
+
 adjust-cell-width          = 6%
 adjust-cell-height         = 16%
 adjust-underline-position  = 2
@@ -25,6 +27,8 @@ confirm-close-surface      = false
 resize-overlay             = never
 
 cursor-style               = block
+# cursor-opacity             = 0.3
+cursor-invert-fg-bg        = true
 adjust-cursor-height       = 2
 
 window-decoration          = false
@@ -53,3 +57,7 @@ keybind = unconsumed:ctrl+shift+alt+c=copy_to_clipboard
 custom-shader-animation    = true
 # custom-shader              = ~/.config/ghostty/shaders/crt-chromatic.glsl
 custom-shader              = ~/.config/ghostty/shaders/rgbsplit.glsl
+# custom-shader              = ~/.config/ghostty/shaders/glitchy.glsl
+# custom-shader              = ~/.config/ghostty/shaders/dither.glsl
+# custom-shader              = ~/.config/ghostty/shaders/bloom.glsl
+# custom-shader              = ~/.config/ghostty/shaders/bettercrt.glsl

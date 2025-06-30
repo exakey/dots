@@ -65,9 +65,9 @@ local customCol = function(colors)
                 Function                         = { fg = ivory },
                 GitSignsAdd                      = { fg = colors.yellow, bg = colors.crust },
                 GitSignsChange                   = { fg = "#7c7157", bg = colors.crust },
-                GitSignsUntracked                = { fg = "#7c7157", bg = colors.crust },
                 GitSignsCurrentLineBlame         = { link = "NormalFloat" },
                 GitSignsDelete                   = { bg = colors.crust },
+                GitSignsUntracked                = { fg = "#7c7157", bg = colors.crust },
                 Identifier                       = { fg = colors.flamingo },
                 Include                          = { fg = colors.mauve },
                 IncSearch                        = { link = "CurSearch" },
@@ -505,12 +505,10 @@ local customCol = function(colors)
                 -- TreesitterContextBottom           = { sp = ivory },
                 -- TreesitterContextLineNumberBottom = { sp = ivory },
                 -- TreesitterContextLineNumber      = { link = "Normal" },
-                -- LspReferenceText                 = { bg = "#281d29" },
-                LspReferenceText                 = { bg = "#281d29", bold = true },
+                LspReferenceText                 = { link = "Visual" },
+                -- LspReferenceText                 = { bg = "#281d29", bold = true },
                 LspReferenceWrite                = { link = "LspReferenceText" },
                 LspReferenceRead                 = { link = "LspReferenceWrite" },
-                -- LspReferenceText                 = { bg = "#21252f", bold = true },
-                -- LspReferenceText                 = { link = "Visual" },
 
         }
 end
@@ -532,7 +530,6 @@ return {
                         no_italic              = true,
                         no_bold                = false,
                         no_underline           = false,
-                        -- color_overrides        = noita,
                         color_overrides        = {
                                 mocha = {
                                         crust  = "#0e0e16",

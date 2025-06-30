@@ -51,12 +51,8 @@ float gnoise(vec3 x)
 	float vh = dot(gh, w - vec3(1., 1., 1.));
 
 	// interpolation
-	float gNoise = va + u.x * (vb - va) +
-		       u.y * (vc - va) +
-		       u.z * (ve - va) +
-		       u.x * u.y * (va - vb - vc + vd) +
-		       u.y * u.z * (va - vc - ve + vg) +
-		       u.z * u.x * (va - vb - ve + vf) +
+	float gNoise = va + u.x * (vb - va) + u.y * (vc - va) + u.z * (ve - va) + u.x * u.y * (va - vb - vc + vd) +
+		       u.y * u.z * (va - vc - ve + vg) + u.z * u.x * (va - vb - ve + vf) +
 		       u.x * u.y * u.z * (-va + vb + vc - vd + ve - vf - vg + vh);
 
 	return 2. * gNoise;
@@ -107,7 +103,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 	col.b += textureLod(iChannel0, st - eps - distortion, 0.).b;
 
 	// white noise + scanlines
-	displayNoise = 0.1 * clamp(displayNoise, 0., 1.);
+	displayNoise = 0.2 * clamp(displayNoise, 0., 1.);
 	col += (.15 + .65 * glitchAmount) * (hash33(vec3(fragCoord, mod(float(iFrame), 1000.))).r) * displayNoise;
 	col -= (.25 + .75 * glitchAmount) * (sin(4. * t + uv.y * iResolution.y * 1.75)) * displayNoise;
 	fragColor = vec4(col, 1.0);

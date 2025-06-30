@@ -312,6 +312,57 @@
         background: @criticalTr;
 }
 
+/* ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+/* CPU TEMPERATURE */
+
+#temperature.icon {
+        color: @normTr;
+        background-color: @main-fg;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        margin-right: 0px;
+        padding-left: 9px;
+        padding-right: 9px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+}
+
+#temperature.icon.critical {
+        color: @criticalTr;
+        background-color: @critical;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        margin-right: 0px;
+        padding-left: 9px;
+        padding-right: 9px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+}
+
+#temperature {
+        color: @main-fg;
+        background-color: @normTr;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        margin-right: 10px;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+}
+
+#temperature.critical {
+        color: @critical;
+        background-color: @criticalTr;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        margin-right: 10px;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+}
+
 #custom-cpuinfo.icon {
         color: @main-bg;
         background: @norm;

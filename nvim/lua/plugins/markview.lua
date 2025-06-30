@@ -3,7 +3,11 @@ return {
         enabled = true,
         lazy    = false,
         opts    = {
-                markdown = {
+                experimental = {
+                        check_rtp         = false,
+                        check_rtp_message = false,
+                },
+                markdown     = {
                         tables = {
                                 enable = true,
                                 parts  = {
