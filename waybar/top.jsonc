@@ -103,8 +103,6 @@
                         "cpu",
                         "memory#icon",
                         "memory",
-                        // "custom/cpuinfo#icon",
-                        // "custom/cpuinfo",
                         "temperature#icon",
                         "temperature",
                         "custom/gpuinfo#icon",
